@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'asterisk',
         'USER': 'root',
         'PASSWORD': '123',
-        'HOST': 'localhost',
+        'HOST': '192.168.8.101',
         'PORT': '',
     }
 }
