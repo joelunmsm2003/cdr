@@ -16,6 +16,7 @@ from django.utils.translation import ugettext_lazy
 class BitCdrAdmin(admin.ModelAdmin):
 	list_display = ('calldate','clid','src','dst','dcontext','channel','dstchannel','lastapp','lastdata','duration','billsec','disposition','amaflags','accountcode','userfield','uniqueid','linkedid','sequence',
 'peeraccount')
+	search_fields =('calldate',)
 
 
 
