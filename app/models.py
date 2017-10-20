@@ -82,7 +82,7 @@ class AuthUserUserPermissions(models.Model):
 
 
 class BitCdr(models.Model):
-	calldate = models.DateTimeField()
+	calldate = models.DateField()
 	clid = models.CharField(max_length=80)
 	src = models.CharField(max_length=80)
 	dst = models.CharField(max_length=80)

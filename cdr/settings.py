@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'widget_tweaks',
+
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -82,7 +84,7 @@ DATABASES = {
         'NAME': 'asterisk',
         'USER': 'root',
         'PASSWORD': '123',
-        'HOST': '192.168.8.101',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }

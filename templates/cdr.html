@@ -1,7 +1,154 @@
-<form action="" method="get">
-{{ filter.form.as_p }}
-<input type="submit" />
-</form>
-{% for obj in filter.qs %}
-{{ obj.calldate }} - {{ obj.clid }}<br />
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="../../../../favicon.ico">
+
+		<title>ThinkIP</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
+		<!-- Custom styles for this template -->
+		<link href="navbar-top-fixed.css" rel="stylesheet">
+
+		
+	</head>
+
+	<body style="font-family: 'Lato', sans-serif;">
+
+		<div class="container">
+
+			<br>
+			<div class="jumbotron">
+					
+				<div class="row">
+					<img src="http://www.tip-peru.com/images/logo.gif" class="">
+					
+					
+				<h4 style='color: #83b62f;    margin-left: 42px;
+'>Powered by ThinKIP</h4>
+
+				</div>
+				
+				<br>
+				
+
+				<form>
+					<fieldset class="form-group">
+						<label for="exampleInputEmail1">Buscar audios entre</label>
+						<div class="row">
+						<div class="col-md-4"><input type="date" class="form-control" name='fechainicio' placeholder="Fecha Inicio"></div>
+						<div class="col-md-4"><input type="date" class="form-control" name='fechafin' placeholder="Fecha Fin"></div>
+
+						</div>
+						
+						
+						
+					</fieldset>
+
+
+					<fieldset class="form-group">
+
+						<div class="row">
+						<div class="col-md-4"><label for="exampleInputPassword1">Ingrese numero de anexo</label>
+						<input type="number" class="form-control" name='anexo' id="exampleInputPassword1" placeholder="Numero de anexo">
+						</div>
+						<div class="col-md-4">
+							<label for="exampleInputPassword1">Ingrese numero de destino</label>
+						<input type="number" class="form-control" name='destino' id="exampleInputPassword1" placeholder="Numero de destino">
+						</div>
+						</div>
+
+
+						
+						
+					</fieldset>
+		
+					<button type="submit" class="btn btn-default">Buscar</button>
+				</form>
+			</div>
+
+
+
+
+<table class="table table-responsive table-inverse">
+
+	<thead>
+		<tr>
+			<th>Fecha</th>
+			<th>Tiempo</th>
+			<th>Anexo</th>
+			<th>Destino</th>
+			<th>Duracion</th>
+			<th>Acciones</th>
+		</tr>
+	</thead>
+
+{% for b in contacts %}
+
+		<tr>
+			<td>{{ b.calldate }}</td>
+			<td>{{ b.duration }}</td>
+			<td>{{ b.src }}</td>
+			<td>{{ b.dst }}</td>
+			<td>{{ b.duration }}</td>
+			<td><a class='btn btn-primary'>Accion</a></td>
+		</tr>
+     
 {% endfor %}
+
+
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if contacts.has_previous %}
+            <a href="?page={{ contacts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
+        </span>
+
+        {% if contacts.has_next %}
+            <a href="?page={{ contacts.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+		</div>
+
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+		<script src="../../../../assets/js/vendor/popper.min.js"></script>
+		<script src="../../../../dist/js/bootstrap.min.js"></script>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="../../../../assets/js/ie10-viewport-bug-workaround.js"></script>
+	</body>
+</html>
+
+
+
+	</div>
+		
+	</body>
+
+</html>
+
+
+<style type="text/css">
+	
+
+	.jumbotron{background: #16171b;
+    color: #fff;}
+</style>
