@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
-    'widget_tweaks',
 
 ]
 
@@ -81,9 +80,9 @@ WSGI_APPLICATION = 'cdr.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'asterisk',
+        'NAME': 'asteriskcdrdb',
         'USER': 'root',
-        'PASSWORD': '123',
+        'PASSWORD': 'virtual11',
         'HOST': 'localhost',
         'PORT': '',
     }

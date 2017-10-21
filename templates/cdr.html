@@ -76,12 +76,11 @@
 
 
 
-
 <table class="table table-responsive table-inverse">
 
 	<thead>
 		<tr>
-			<th>Fecha</th>
+			<th><a id="btn" >Fecha</a></th>
 			<th>Tiempo</th>
 			<th>Anexo</th>
 			<th>Destino</th>
@@ -98,7 +97,7 @@
 			<td>{{ b.src }}</td>
 			<td>{{ b.dst }}</td>
 			<td>{{ b.duration }}</td>
-			<td><a class='btn btn-primary'>Accion</a></td>
+			<td><a class='btn btn-default btn-sm'>Accion</a></td>
 		</tr>
      
 {% endfor %}
@@ -144,6 +143,23 @@
 	</body>
 
 </html>
+
+<script type="text/javascript">
+
+console.log('{{orderfecha}}')
+	
+function $(elemento) {
+  return document.querySelector(elemento);
+}
+$('#btn').addEventListener('click', function() {
+
+
+
+  $('#btn').setAttribute('href', window.location.href + "?orderfecha=-{{orderfecha}}");
+});
+
+
+</script>
 
 
 <style type="text/css">

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from app.filtros import *
+from app.models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from datetime import datetime
@@ -8,9 +8,13 @@ def list(request):
 
 	my_filter = {}
 
+	orderfecha='calldate'
+
 	for r in request.GET:
 
 		print 'shhs',r
+
+		
 
 		if r=='fechainicio':
 
@@ -43,9 +47,36 @@ def list(request):
 				my_filter['dst'] = request.GET['destino']
 
 
-	print my_filter
+		if r=='orderfecha':
 
-	contact_list = BitCdr.objects.filter(**my_filter)
+			if request.GET['orderfecha']:
+
+				if request.GET['orderfecha']=='calldate':
+
+					orderfecha='-calldate'
+
+				else:
+
+					orderfecha='calldate'
+
+		if r=='ordertiempo':
+
+			if request.GET['ordertiempo']:
+
+				if request.GET['ordertiempo']=='asc':
+
+					ordertiempo='-duration'
+
+				else:
+
+					ordertiempo='duration'
+
+
+
+
+
+
+	contact_list = Cdr.objects.filter(**my_filter).order_by(orderfecha)
 	paginator = Paginator(contact_list, 25) # Show 25 contacts per page
 
 	page = request.GET.get('page')
@@ -58,6 +89,6 @@ def list(request):
 	    # If page is out of range (e.g. 9999), deliver last page of results.
 		contacts = paginator.page(paginator.num_pages)
 
-	return render(request, 'cdr.html', {'contacts': contacts})
+	return render(request, 'cdr.html', {'contacts': contacts,'orderfecha':orderfecha})
 
 
