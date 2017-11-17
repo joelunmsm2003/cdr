@@ -19,5 +19,9 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^list$', 'app.views.list'),
+    url(r'^ingresar$', 'app.views.ingresar'),
+    url(r'^salir$', 'app.views.salir'),
+    url(r'^$', 'app.views.ingresar'),
+    url(r'^audio/$', 'app.views.audio'),    
     #url(r'^total$', 'app.views.list')
 ]

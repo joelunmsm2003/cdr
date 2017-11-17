@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -9,7 +8,7 @@
 		<meta name="author" content="">
 		<link rel="icon" href="../../../../favicon.ico">
 
-		<title>ThinkIP</title>
+	
 
 		<!-- Bootstrap core CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -22,17 +21,36 @@
 
 	<body style="font-family: 'Lato', sans-serif;">
 
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+  <!--   <ul class="nav navbar-nav">
+      <li class="active"><a href="#"></a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+    </ul> -->
+    <ul class="nav navbar-nav navbar-right">
+    <li ><a href="/salir">Salir  &nbsp &nbsp<img src="/static/logout.svg" style='max-width: 35px;'></a></li>
+  	<li ><a href="/list">Bienvenido,  {{user.username}} &nbsp &nbsp<img src="/static/person.svg" style='max-width: 35px;'></a></li>
+
+    </ul>
+  </div>
+</nav>
+
 		<div class="container">
 
 			<br>
 			<div class="jumbotron">
 					
 				<div class="row">
-					<img src="http://www.tip-peru.com/images/logo.gif" class="">
+					REPORT CDR 
 					
 					
-				<h4 style='color: #83b62f;    margin-left: 42px;
-'>Powered by ThinKIP</h4>
+
 
 				</div>
 				
@@ -41,25 +59,21 @@
 
 				<form>
 					<fieldset class="form-group">
+						
+						<div class="row">
+
+
+						<div class="col-md-3">
 						<label for="exampleInputEmail1">Buscar audios entre</label>
-						<div class="row">
-						<div class="col-md-4"><input type="date" class="form-control" name='fechainicio' placeholder="Fecha Inicio"></div>
-						<div class="col-md-4"><input type="date" class="form-control" name='fechafin' placeholder="Fecha Fin"></div>
+						<input type="date" class="form-control" name='fechainicio' placeholder="Fecha Inicio"></div>
+						<div class="col-md-3">
+						<label for="exampleInputEmail1">Inicio/Fin</label>
+						<input type="date" class="form-control" name='fechafin' placeholder="Fecha Fin"></div>
 
-						</div>
-						
-						
-						
-					</fieldset>
-
-
-					<fieldset class="form-group">
-
-						<div class="row">
-						<div class="col-md-4"><label for="exampleInputPassword1">Ingrese numero de anexo</label>
+						<div class="col-md-3"><label for="exampleInputPassword1">Ingrese numero de anexo</label>
 						<input type="number" class="form-control" name='anexo' id="exampleInputPassword1" placeholder="Numero de anexo">
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<label for="exampleInputPassword1">Ingrese numero de destino</label>
 						<input type="number" class="form-control" name='destino' id="exampleInputPassword1" placeholder="Numero de destino">
 						</div>
@@ -81,7 +95,7 @@
 	<thead>
 		<tr>
 			<th><a id="btn" >Fecha</a></th>
-			<th>Tiempo</th>
+
 			<th>Anexo</th>
 			<th>Destino</th>
 			<th>Duracion</th>
@@ -93,11 +107,13 @@
 
 		<tr>
 			<td>{{ b.calldate }}</td>
-			<td>{{ b.duration }}</td>
+
 			<td>{{ b.src }}</td>
 			<td>{{ b.dst }}</td>
 			<td>{{ b.duration }}</td>
-			<td><a class='btn btn-default btn-sm'>Accion</a></td>
+
+			<td><a class='btn btn-default btn-sm' href='{{b.url}}'>Audio</a></td>
+
 		</tr>
      
 {% endfor %}
@@ -167,4 +183,17 @@ $('#btn').addEventListener('click', function() {
 
 	.jumbotron{background: #16171b;
     color: #fff;}
+
+    .navbar-default {
+    background-color: #16171b;
+    border-color: #88bd30;
+    /* color: #fff; */
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+.navbar-default .navbar-nav>li>a:hover{
+    color: #fff;
+}
 </style>
