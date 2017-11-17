@@ -103,11 +103,10 @@ def list(request):
 
 	orderfecha='calldate'
 
+
+	print 'request.GET',request.GET
+
 	for r in request.GET:
-
-		print 'shhs',r
-
-		
 
 		if r=='fechainicio':
 
@@ -164,19 +163,10 @@ def list(request):
 
 					ordertiempo='duration'
 
-
-
-
-
-
 	contact_list = Cdr.objects.filter(**my_filter).order_by(orderfecha).values('calldate','src','dst','duration').order_by('-calldate')
 
 
 	for p in range(len(contact_list)):
-
-		print contact_list[p]['calldate'].year
-
-
 
 		anio =  contact_list[p]['calldate'].year
 		mes= contact_list[p]['calldate'].month
@@ -185,7 +175,6 @@ def list(request):
 		minuto =contact_list[p]['calldate'].minute
 		segundo=contact_list[p]['calldate'].second
 
-		print anio,mes,dia,hora,minuto,segundo
 
 		if len(str(mes))==1: mes='0'+str(mes)
 		if len(str(dia))==1: dia='0'+str(dia)		
@@ -193,8 +182,6 @@ def list(request):
 		if len(str(minuto))==1: minuto='0'+str(minuto)		
 		if len(str(segundo))==1: segundo='0'+str(segundo)
 
-
-		print 	contact_list[p]['calldate'],datetime.today()
 
 		now = timezone.now()
 
@@ -252,6 +239,6 @@ def list(request):
 	    # If page is out of range (e.g. 9999), deliver last page of results.
 		contacts = paginator.page(paginator.num_pages)
 
-	return render(request, 'cdr.html', {'contacts': contacts,'user':user,'orderfecha':orderfecha})
+	return render(request, 'cdr.html', {'contacts': contacts,'user':user,'orderfecha':orderfecha,'my_filter':request.GET})
 
 

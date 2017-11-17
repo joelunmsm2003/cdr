@@ -77,16 +77,29 @@ WSGI_APPLICATION = 'cdr.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'asteriskcdrdb',
+#         'USER': 'root',
+#         'PASSWORD': 'virtual11',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'asteriskcdrdb',
+        'NAME': 'cdr',
         'USER': 'root',
-        'PASSWORD': 'virtual11',
+        'PASSWORD': 'd4t4B4$3*',
         'HOST': 'localhost',
         'PORT': '',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

@@ -13,10 +13,13 @@
 		<!-- Bootstrap core CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
-		<!-- Custom styles for this template -->
-		<link href="navbar-top-fixed.css" rel="stylesheet">
 
-		
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+		<!-- Custom styles for this template -->
+	
+
 	</head>
 
 	<body style="font-family: 'Lato', sans-serif;">
@@ -88,7 +91,21 @@
 				</form>
 			</div>
 
+<div class="pagination">
+    <span class="step-links">
+        {% if contacts.has_previous %}
+            <button class='prevp btn btn-default' onclick="prevp()">{{contacts.previous_page_number}}</button>
+        {% endif %}
 
+        <span class="current">
+            Pagina {{ contacts.number }} de {{contacts.paginator.num_pages}}.
+        </span>
+
+        {% if contacts.has_next %}
+            <button class='nextp btn btn-default' onclick="nextp()">{{contacts.next_page_number }}</button>
+        {% endif %}
+    </span>
+</div>
 
 <table class="table table-responsive table-inverse">
 
@@ -121,10 +138,12 @@
 
 </table>
 
-<div class="pagination">
+
+
+<!-- <div class="pagination">
     <span class="step-links">
         {% if contacts.has_previous %}
-            <a href="?page={{ contacts.previous_page_number }}">previous</a>
+            <a class='prevp' href="?page={{ contacts.previous_page_number }}">previous</a>
         {% endif %}
 
         <span class="current">
@@ -132,23 +151,15 @@
         </span>
 
         {% if contacts.has_next %}
-            <a href="?page={{ contacts.next_page_number }}">next</a>
+            <a class='nextp' href="?page={{ contacts.next_page_number }}">next</a>
         {% endif %}
     </span>
-</div>
+</div> -->
+
+
 
 		</div>
 
-
-		<!-- Bootstrap core JavaScript
-		================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-		<script src="../../../../assets/js/vendor/popper.min.js"></script>
-		<script src="../../../../dist/js/bootstrap.min.js"></script>
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-		<script src="../../../../assets/js/ie10-viewport-bug-workaround.js"></script>
 	</body>
 </html>
 
@@ -160,9 +171,74 @@
 
 </html>
 
+
+
 <script type="text/javascript">
 
-console.log('{{orderfecha}}')
+
+
+nextp1 = $('.nextp').innerText;
+
+if (nextp1 > 2){
+
+	prevp1 = $('.prevp').innerText;
+}
+
+
+
+
+
+
+function nextp(){
+
+    url = document.location.href
+
+    console.log(url.length)
+
+    if (url.length > 30){
+
+	window.location.href = url+'&page='+nextp1
+	
+	}
+	else{
+
+	window.location.href = url+'?page='+nextp1
+	
+	}
+
+}
+
+function prevp(){
+
+    url = document.location.href
+
+    console.log(url.length)
+
+    if (url.length > 30){
+
+	window.location.href = url+'&page='+prevp1
+	
+	}
+	else{
+
+	window.location.href = url+'?page='+prevp1
+	
+	}
+
+}
+
+function endp(){
+
+    url = document.location.href
+
+    console.log(url)
+    
+    window.location.href = url+'&page='+endp1
+
+}
+
+
+
 	
 function $(elemento) {
   return document.querySelector(elemento);
@@ -197,3 +273,4 @@ $('#btn').addEventListener('click', function() {
     color: #fff;
 }
 </style>
+
