@@ -31,7 +31,7 @@ class Cdr(models.Model):
     import_cdr = models.IntegerField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'cdr'
 
 

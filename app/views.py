@@ -138,6 +138,12 @@ def list(request):
 
 				my_filter['dst'] = request.GET['destino']
 
+		if r=='accountcode':
+
+			if request.GET['accountcode']:
+
+				my_filter['accountcode'] = request.GET['accountcode']
+
 
 		if r=='orderfecha':
 

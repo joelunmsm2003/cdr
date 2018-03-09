@@ -69,17 +69,24 @@
 						<div class="col-md-3">
 						<label for="exampleInputEmail1">Buscar audios entre</label>
 						<input type="date" class="form-control" name='fechainicio' placeholder="Fecha Inicio"></div>
+						
 						<div class="col-md-3">
 						<label for="exampleInputEmail1">Inicio/Fin</label>
 						<input type="date" class="form-control" name='fechafin' placeholder="Fecha Fin"></div>
 
-						<div class="col-md-3"><label for="exampleInputPassword1">Ingrese numero de anexo</label>
+						<div class="col-md-2"><label for="exampleInputPassword1">Numero de anexo</label>
 						<input type="number" class="form-control" name='anexo' id="exampleInputPassword1" placeholder="Numero de anexo">
 						</div>
-						<div class="col-md-3">
-							<label for="exampleInputPassword1">Ingrese numero de destino</label>
+						<div class="col-md-2">
+							<label for="exampleInputPassword1">Numero de destino</label>
 						<input type="number" class="form-control" name='destino' id="exampleInputPassword1" placeholder="Numero de destino">
 						</div>
+
+						<div class="col-md-2">
+							<label for="exampleInputPassword1">Account Code</label>
+						<input type="number" class="form-control" name='accountcode' id="exampleInputPassword1" placeholder="Numero de accountcode">
+						</div>
+
 						</div>
 
 
@@ -116,7 +123,7 @@
 			<th>Anexo</th>
 			<th>Destino</th>
 			<th>Duracion</th>
-			<th>Acciones</th>
+			<th>Usuario</th>
 		</tr>
 	</thead>
 
@@ -129,8 +136,10 @@
 			<td>{{ b.dst }}</td>
 			<td>{{ b.duration }}</td>
 
-			<td><a class='btn btn-default btn-sm' href='{{b.url}}'>Audio</a></td>
+			<td>{{ b.accountcode }}</td>
 
+			<!-- <td><a class='btn btn-default btn-sm' href='{{b.url}}'>Audio</a></td>
+ -->
 		</tr>
      
 {% endfor %}
