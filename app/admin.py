@@ -14,30 +14,32 @@ from django.contrib.admin import AdminSite
 from django.utils.translation import ugettext_lazy
 
 
-class CallDateListFilter(DateRangeFilter):
-	# Human-readable title which will be displayed in the
-	# right admin sidebar just above the filter options.
-	title ='Citas'
+# class CallDateListFilter(DateRangeFilter):
+# 	# Human-readable title which will be displayed in the
+# 	# right admin sidebar just above the filter options.
+# 	title ='Citas'
 
-	# Parameter for the filter that will be used in the URL query.
-	parameter_name = 'Usuario'
+# 	# Parameter for the filter that will be used in the URL query.
+# 	parameter_name = 'Usuario'
 
-	# def lookups(self, request, model_admin):
+# 	# def lookups(self, request, model_admin):
 
-	#     return (
-	#         ('X', 'X'),
-	#     )
+# 	#     return (
+# 	#         ('X', 'X'),
+# 	#     )
 
-	def queryset(self, request, queryset):
+# 	def queryset(self, request, queryset):
 
-		return queryset.all()
+# 		return queryset.all()
 
 
 @admin.register(Cdr)
 class CdrAdmin(admin.ModelAdmin):
-	list_display = ('calldate','clid','src','dst','dcontext','channel','dstchannel','lastapp','lastdata','duration','billsec','disposition','amaflags','accountcode','userfield','uniqueid','userfield','import_cdr')
-	list_filter = (CallDateListFilter,)
+
+	list_display = ('calldate','duration','billsec','disposition','amaflags','accountcode','uniqueid')
+
 	search_fields =('calldate',)
+	list_filter =('disposition',('calldate', DateRangeFilter))
 
 
 # @admin.register(BitCdr)
