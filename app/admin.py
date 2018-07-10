@@ -14,7 +14,7 @@ from django.utils.translation import ugettext_lazy
 
 @admin.register(Cdr)
 class CdrAdmin(admin.ModelAdmin):
-	list_display = ('acctid','calldate','clid','src','dst','dcontext','channel','dstchannel','lastapp','lastdata','duration','billsec','disposition','amaflags','accountcode','userfield','uniqueid','userfield','import_cdr')
+	list_display = ('calldate','duration','billsec','disposition','amaflags','accountcode','uniqueid')
 	search_fields =('calldate',)
 
 
