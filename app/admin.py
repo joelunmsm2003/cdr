@@ -12,6 +12,12 @@ from django.contrib.admin.filters import RelatedOnlyFieldListFilter
 from django.contrib.admin import AdminSite
 from django.utils.translation import ugettext_lazy
 
+@admin.register(Cdr)
+class CdrAdmin(admin.ModelAdmin):
+	list_display = ('acctid','calldate','clid','src','dst','dcontext','channel','dstchannel','lastapp','lastdata','duration','billsec','disposition','amaflags','accountcode','userfield','uniqueid','userfield','import_cdr')
+	search_fields =('calldate',)
+
+
 # @admin.register(BitCdr)
 # class BitCdrAdmin(admin.ModelAdmin):
 # 	list_display = ('calldate','clid','src','dst','dcontext','channel','dstchannel','lastapp','lastdata','duration','billsec','disposition','amaflags','accountcode','userfield','uniqueid','linkedid','sequence',

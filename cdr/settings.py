@@ -9,12 +9,23 @@ https://docs.djangoproject.com/en/1.9/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
-
+import raven
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
+RAVEN_CONFIG = {
+    'dsn': 'https://c21b0c71418d43029eb6eb69597c8e8d:234dcc67054a43809d80b5090ea26b9e@sentry.io/1240856',
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(BASE_DIR),
+}
+
+
+
+    
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -31,6 +42,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'raven.contrib.django.raven_compat',
 
 ]
 
@@ -92,7 +105,7 @@ WSGI_APPLICATION = 'cdr.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cdr',
+        'NAME': 'MEGO_masterword',
         'USER': 'root',
         'PASSWORD': 'd4t4B4$3*',
         'HOST': 'localhost',
