@@ -50,7 +50,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'daterange_filter',
     'raven.contrib.django.raven_compat',
+
 
 ]
 
