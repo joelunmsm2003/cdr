@@ -52,7 +52,32 @@ class CdrAdmin(admin.ModelAdmin):
 	def Genera_CSV(self, request,queryset):
 
 
-		print 'request....',request
+
+		my_filter={}
+
+		print queryset.count()
+
+		for a in request.GET:
+
+			if a == 'disposition':
+
+				my_filter['disposition']=request.GET['disposition']
+			
+			if a=='accountcode':
+
+				my_filter['accountcode']=request.GET['accountcode']
+			
+			if a=='drf__calldate__gte':
+
+				print request.GET['drf__calldate__gte']
+
+				my_filter['calldate__gte']=request.GET['drf__calldate__gte']
+
+			if a=='drf__calldate__lte':
+
+				print request.GET['drf__calldate__lte']
+
+				my_filter['calldate__lte']=request.GET['drf__calldate__lte']
 
 
 		response = HttpResponse(content_type='text/csv')
@@ -63,9 +88,10 @@ class CdrAdmin(admin.ModelAdmin):
 
 		writer.writerow(['Calldate','Billsec','Disposition','Accountcode'])
 
-		for q in queryset:
+		_cdr=Cdr.objects.filter(**my_filter)
 
-	
+		for q in _cdr:
+
 			writer.writerow([q.calldate,q.billsec ,q.disposition,q.accountcode])
 
 		return response
